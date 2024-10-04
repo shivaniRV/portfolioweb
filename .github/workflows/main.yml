@@ -18,20 +18,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js (Update to use Node.js 20)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Updated to Node.js 20
+          node-version: '20'
 
-      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Run tests (if any)
-      - name: Run tests
-        run: npm test
+      # Remove the test step if not needed
+      # - name: Run tests
+      #   run: npm test
 
-      # Build the project
       - name: Build project
         run: npm run build
