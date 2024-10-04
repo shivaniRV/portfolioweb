@@ -1,0 +1,39 @@
+# .github/workflows/frontend-ci.yml
+
+name: Frontend CI
+
+# Define when the workflow should run
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Jobs section contains the steps
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run tests (if any)
+      - name: Run tests
+        run: npm test
+
+      # Build the project
+      - name: Build project
+        run: npm run build
