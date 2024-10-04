@@ -1,5 +1,3 @@
-# .github/workflows/frontend-ci.yml
-
 name: Frontend CI
 
 on:
@@ -26,9 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Remove the test step if not needed
-      # - name: Run tests
-      #   run: npm test
-
       - name: Build project
         run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          build_dir: build  # The directory with your built files (e.g., 'build' for React)
